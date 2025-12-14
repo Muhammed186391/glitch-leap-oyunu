@@ -790,10 +790,18 @@ function cizimYap() {
         ctx.font = '20px Arial';
         ctx.fillStyle = '#ffffff'; 
         ctx.fillText("İpucu: Düşmanları 'üstünden zıplayarak' ya da 'F' tuşuyla öldürebilirsin!", canvas.width / 2, canvas.height / 2 + 50);
+        
+        // Glitch Leap: Mobil Yeniden Başlatma Düğmesini Göster
+        if (yenidenBaslatTus) {
+            yenidenBaslatTus.style.display = 'block'; 
+        }
 
-    }
-    
-    if (!oyunBittiMi) {
+    } else {
+        // Glitch Leap: Oyun aktifken Mobil Yeniden Başlatma Düğmesini Gizle
+        if (yenidenBaslatTus) {
+            yenidenBaslatTus.style.display = 'none'; 
+        }
+        
         requestAnimationFrame(oyunDongusu); 
     }
 }
@@ -821,6 +829,7 @@ const solTus = document.getElementById('solTus');
 const sagTus = document.getElementById('sagTus');
 const zıplaTus = document.getElementById('zıplaTus');
 const atisTus = document.getElementById('atisTus');
+const yenidenBaslatTus = document.getElementById('yenidenBaslatTus'); // YENİ TANIM
 
 function mobilTusOlayiEkle(element, kod, tip) {
     if (!element) return; 
@@ -863,6 +872,22 @@ function mobilTusOlayiEkle(element, kod, tip) {
     element.addEventListener('touchcancel', birakmaHandler); 
     element.addEventListener('mouseleave', (e) => { // Mouse buton dışına çıkarsa bırak
         if (e.buttons === 0) tuslar[kod] = false; 
+    });
+}
+
+// YENİDEN BAŞLATMA DÜĞMESİ MANTIĞI
+if (yenidenBaslatTus) {
+    yenidenBaslatTus.addEventListener('click', () => {
+        if (oyunBittiMi) {
+            yenidenBaslat();
+        }
+    });
+    // Mobil dokunmatik desteği için
+    yenidenBaslatTus.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (oyunBittiMi) {
+            yenidenBaslat();
+        }
     });
 }
 
