@@ -69,6 +69,10 @@
         #atisTus {
             background-color: #ffea00; /* Atış Tuşu */
         }
+        
+        #yenidenBaslatTus {
+            margin-top: 20px;
+        }
 
         .mobil-tus:active {
             box-shadow: 0 0 #444;
@@ -115,13 +119,17 @@
             <button id="atisTus" class="mobil-tus">ATIŞ (F)</button>
         </div>
     </div>
+    
+    <button id="yenidenBaslatTus" class="mobil-tus" style="display: none; background-color: #ffffff; color: #ff00ff; border: 2px solid #ff00ff; font-size: 20px;">
+        R - YENİDEN BAŞLAT
+    </button>
 
     <div class="kontrol-bilgisi">
         <h3>Kontroller</h3>
         <p>Hareket: **A/D** veya **Sol/Sağ Oklar** (Mobil: Ekrandaki Tuşlar)</p>
         <p>Zıplama: **Space** (Çift zıplama hakkınız var!)</p>
         <p>Atış: **F** (0.5 saniye soğuma süresi)</p>
-        <p>Yeniden Başlatma: **R** (Oyun bittiğinde)</p>
+        <p>Yeniden Başlatma: **R** (Oyun bittiğinde veya Mobil: Büyük Buton)</p>
     </div>
 
     <script src="game.js"></script>
