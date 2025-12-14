@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitch Leap - Sonsuz Koşu Platform Oyunu</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Üste hizala */
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 20px; /* Üstten biraz boşluk */
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #ff00ff;
+        }
+        #oyunAlani {
+            border: 3px solid #ff00ff;
+            box-shadow: 0 0 20px #ff00ff;
+            background-color: #1a1a1a;
+            max-width: 800px;
+            width: 95vw; /* Mobil uyumluluk */
+            height: auto;
+        }
+        .kontrol-bilgisi {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #333333;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 780px;
+        }
+        .kontrol-bilgisi h3 {
+            color: #00ffff;
+        }
+        .kontrol-bilgisi p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Mobil Kontrol Stilleri */
+        .mobil-tus {
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #1a1a1a;
+            box-shadow: 0 4px #444;
+            transition: all 0.05s;
+        }
+
+        #solTus, #sagTus {
+            background-color: #00ffff; /* Hareket Tuşları */
+        }
+        
+        #zıplaTus {
+            background-color: #ff00ff; /* Zıplama Tuşu */
+        }
+
+        #atisTus {
+            background-color: #ffea00; /* Atış Tuşu */
+        }
+
+        .mobil-tus:active {
+            box-shadow: 0 0 #444;
+            transform: translateY(4px);
+        }
+
+        /* Mobil Cihazlarda Göster, Büyük Ekranlarda Gizle */
+        #mobilKontroller {
+            margin-top: 20px;
+            display: none; /* Varsayılan olarak gizle */
+            justify-content: center;
+            gap: 40px;
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        @media (max-width: 800px) {
+            #mobilKontroller {
+                display: flex !important; /* Mobil boyutlarda göster */
+            }
+            .kontrol-bilgisi {
+                margin-top: 30px;
+            }
+            body {
+                padding-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Glitch Leap</h1>
+    
+    <canvas id="oyunAlani" width="800" height="450"></canvas>
+    
+    <div id="mobilKontroller">
+        <div style="display: flex; gap: 10px;">
+            <button id="solTus" class="mobil-tus">&#9664; SOL</button>
+            <button id="sagTus" class="mobil-tus">SAĞ &#9654;</button>
+        </div>
+        
+        <div style="display: flex; gap: 10px;">
+            <button id="zıplaTus" class="mobil-tus">ZIPLA</button>
+            <button id="atisTus" class="mobil-tus">ATIŞ (F)</button>
+        </div>
+    </div>
+
+    <div class="kontrol-bilgisi">
+        <h3>Kontroller</h3>
+        <p>Hareket: **A/D** veya **Sol/Sağ Oklar** (Mobil: Ekrandaki Tuşlar)</p>
+        <p>Zıplama: **Space** (Çift zıplama hakkınız var!)</p>
+        <p>Atış: **F** (0.5 saniye soğuma süresi)</p>
+        <p>Yeniden Başlatma: **R** (Oyun bittiğinde)</p>
+    </div>
+
+    <script src="game.js"></script>
+
+</body>
+</html>
